@@ -15,16 +15,14 @@
 
   <script>
     // ************************************************************
-    // 📢 第一步: 請將這裡替換成您機器人的 LINE 官方帳號 URL！
-    // 這是分享時，朋友會收到的連結。
+    // 📢 您的 LINE 官方帳號 URL：用戶點擊連結即可加入機器人
     // ************************************************************
-    const BOT_SHARE_LINK = "https://line.me/R/ti/p/@你的LINE_ID"; // <<< 請更換！
+    const BOT_SHARE_LINK = "https://lin.ee/uc3c8NZ"; 
 
     // ************************************************************
-    // 📢 第二步: 在 LINE Developers 獲取 LIFF ID 後，請將這裡替換！
-    // 現在先用 YOUR_LIFF_ID 部署，等獲取 LIFF ID 後再回來更新。
+    // 📢 您的 LIFF ID：從 LINE Developers 取得
     // ************************************************************
-    const LIFF_ID = "YOUR_LIFF_ID"; // <<< 部署成功後，必須回來替換！
+    const LIFF_ID = "2008226044-8PlxDyW"; //
     
     // 這是 LINE 分享訊息的內容
     const shareMessage = [
@@ -37,8 +35,8 @@
     async function main() {
       // 確保 LIFF ID 已被替換
       if (LIFF_ID === "YOUR_LIFF_ID") {
-        document.getElementById("shareBtn").textContent = "❌ LIFF ID 尚未設定 (檢查 Console)";
-        console.error("請先在 LIFF 設定中獲取 ID 後，回到 index.html 替換 LIFF_ID 變數。");
+        document.getElementById("shareBtn").textContent = "❌ LIFF ID 尚未設定 (請檢查程式碼)";
+        console.error("LIFF ID 尚未設定！");
         return;
       }
 
