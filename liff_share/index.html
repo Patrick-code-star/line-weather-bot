@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aviation Weather Bot Share</title>
-  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <title>Wx Now: Get Aviation Wx in LINE</title>  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <style>
     body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f0f0; }
     #shareBtn { padding: 15px 30px; font-size: 18px; color: white; background-color: #00b900; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
@@ -14,33 +13,21 @@
   <button id="shareBtn">📤 分享給飛行夥伴 Share with Friends</button>
 
   <script>
-    // ************************************************************
-    // 📢 您的 LINE 官方帳號 URL：用戶點擊連結即可加入機器人
-    // ************************************************************
+    // 您的 LINE 官方帳號 URL
     const BOT_SHARE_LINK = "https://lin.ee/uc3c8NZ"; 
 
-    // ************************************************************
-    // 📢 您的 LIFF ID：已更新為最新的 ID！
-    // ************************************************************
-    const LIFF_ID = "2008226044-zw21x6wb"; // <<< 請確認這個 ID 是最新的！
+    // 您的 LIFF ID (新 ID)
+    const LIFF_ID = "2008226044-zw21x6wb"; 
     
-    // 這是 LINE 分享訊息的內容
+    // 中英雙語分享訊息
     const shareMessage = [
       {
         type: "text",
-        text: "✈️ 專業航空氣象查詢機器人！(Aviation Weather Bot)\n只需輸入 ICAO 代碼，即時獲取 METAR / TAF。\nJust input ICAO code to get instant METAR / TAF.\n\n🚀 點此加入 / Click to join: " + BOT_SHARE_LINK
+        text: "✈️ 專業航空氣象查詢機器人！(Wx Now)\n只需輸入 ICAO 代碼，即時獲取 METAR / TAF。\nJust input ICAO code to get instant METAR / TAF.\n\n🚀 點此加入 / Click to join: " + BOT_SHARE_LINK
       }
     ];
 
     async function main() {
-      // 確保 LIFF ID 已被替換
-      if (LIFF_ID === "YOUR_LIFF_ID") {
-        document.getElementById("shareBtn").textContent = "❌ LIFF ID 尚未設定 (請檢查程式碼)";
-        console.error("LIFF ID 尚未設定！");
-        return;
-      }
-
-      // 檢查是否在 LINE 環境中
       if (!liff.isInClient()) {
         document.getElementById("shareBtn").textContent = "請在 LINE 應用程式內開啟此頁面";
         return;
@@ -50,7 +37,6 @@
       
       document.getElementById("shareBtn").addEventListener("click", async () => {
         try {
-          // 呼叫 LINE 的分享介面
           await liff.shareTargetPicker(shareMessage);
         } catch (error) {
           console.error("分享失敗:", error);
