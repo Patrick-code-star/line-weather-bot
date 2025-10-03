@@ -20,9 +20,9 @@
     const BOT_SHARE_LINK = "https://lin.ee/uc3c8NZ"; 
 
     // ************************************************************
-    // 📢 您的 LIFF ID：從 LINE Developers 取得
+    // 📢 您的 LIFF ID：已更新為最新的 ID！
     // ************************************************************
-    const LIFF_ID = "2008226044-8PlxDyW"; //
+    const LIFF_ID = "2008226044-zw21x6wb"; // <<< 請確認這個 ID 是最新的！
     
     // 這是 LINE 分享訊息的內容
     const shareMessage = [
@@ -40,6 +40,12 @@
         return;
       }
 
+      // 檢查是否在 LINE 環境中
+      if (!liff.isInClient()) {
+        document.getElementById("shareBtn").textContent = "請在 LINE 應用程式內開啟此頁面";
+        return;
+      }
+      
       await liff.init({ liffId: LIFF_ID });
       
       document.getElementById("shareBtn").addEventListener("click", async () => {
@@ -48,16 +54,11 @@
           await liff.shareTargetPicker(shareMessage);
         } catch (error) {
           console.error("分享失敗:", error);
-          alert("分享功能呼叫失敗。請確認是否在 LINE App 內開啟此 LIFF。");
+          alert("分享功能呼叫失敗。錯誤訊息: " + error.message);
         }
       });
     }
     
-    // 如果不是在 LINE 內打開，顯示提示
-    if (!liff.isInClient() && window.location.protocol === 'https:') {
-        document.getElementById("shareBtn").textContent = "請在 LINE 應用程式內開啟此頁面";
-    }
-
     main();
   </script>
 </body>
